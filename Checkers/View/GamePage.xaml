@@ -1,0 +1,89 @@
+﻿<Page x:Class="Checkers.GamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Checkers"
+      mc:Ignorable="d" 
+      Title="GamePage">
+
+    <Grid Width="1100" Height = "800">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/background.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Background="White" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+            <MenuItem Header="File">
+                <MenuItem Header="Open Game" Command="{Binding Path=Open}"></MenuItem>
+                <MenuItem Header="Save Game" Command="{Binding Path=Save}"></MenuItem>
+                <MenuItem Header="Statistics" Command="{Binding Path=Statistics}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Game Modes">
+                <MenuItem Header="Classic Checkers Game" Command="{Binding Path=NewGame}"></MenuItem>
+                <!--<MenuItem Header="Allow Multiple Jump" Command="{Binding Path=ChooseMultipleJump}"></MenuItem>-->
+                <MenuItem Header="Only King Pieces" Command="{Binding Path=ChooseKingPieces}"></MenuItem>
+                <MenuItem Header="Few Pieces" Command="{Binding Path=ChooseFewPieces}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Command="{Binding Path=About}"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid x:Name="BoardGrid" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Margin="35,110,235,0" Grid.RowSpan="4" Grid.Column="2" Grid.Row="2">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="90"/>
+                    <ScaleTransform ScaleX="-1"/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <ItemsControl ItemsSource="{Binding Game.Board.Pieces}" Margin="-30,20,30,-20">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="8" Rows="8" Margin="-2"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ItemsControl ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="1" Columns="1"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <DataTemplate.Resources>
+                                        <Style TargetType="Image">
+                                            <EventSetter Event="MouseDown" Handler="Handle_MouseDown"/>
+                                        </Style>
+                                    </DataTemplate.Resources>
+                                    <Image IsHitTestVisible="True" Source="{Binding ImagePath}" Width="85" Height="85"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+        <Label x:Name="Round" Content="{Binding Round}" FontSize="28" RenderTransformOrigin="3,3.5" Margin="472,93,11,60" Grid.Column="3" Grid.Row="2" Background="WhiteSmoke"/>
+        <Label Content="Remaining Red Pieces:" FontSize="18" RenderTransformOrigin="3,3.5" Margin="0,95,160,70" Grid.Column="1" Grid.Row="2" Background="WhiteSmoke" Grid.ColumnSpan="2"/>
+        <Label Content="Remaining White Pieces:" FontSize="18" RenderTransformOrigin="3,3.5" Margin="0,155,145,10" Grid.Column="1" Grid.Row="2" Background="WhiteSmoke" Grid.ColumnSpan="2"/>
+        <Label Content="{Binding NumberPiecesRed}" FontSize="18" RenderTransformOrigin="3,3.5" Margin="70,95,100,70" Grid.Column="2" Grid.Row="2" Background="WhiteSmoke"/>
+        <Label Content="{Binding NumberPiecesWhite}" FontSize="18" RenderTransformOrigin="3,3.5" Margin="70,155,100,10" Grid.Column="2" Grid.Row="2" Background="WhiteSmoke"/>
+
+    </Grid>
+</Page>
