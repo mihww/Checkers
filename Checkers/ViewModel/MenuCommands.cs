@@ -317,7 +317,7 @@ namespace Checkers
         }
         private void ShowValidMoves()
         {
-            string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images");
+            string directoryPath = GetDirectoryPath("../../Images");
             foreach (var move in validMoves)
             {
                 Console.WriteLine("\n");
@@ -329,7 +329,8 @@ namespace Checkers
         }
         private void ClearValidMoves()
         {
-            string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../Images");
+            string directoryPath = GetDirectoryPath("../../Images");
+            Console.WriteLine(directoryPath);
             string possibleMovePath = Path.Combine(directoryPath, "PossibleMove.png");
             string darkSquarePath = Path.Combine(directoryPath, "DarkSquare.png");
 
@@ -387,7 +388,7 @@ namespace Checkers
         private void HandleRightClick(Piece clickedPiece)
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            string directoryPath = Path.GetFullPath(Path.Combine(basePath, "../../Images"));
+            string directoryPath = GetDirectoryPath("../../Images");
             Console.WriteLine("R. CLICK @ " + clickedPiece.Coordonates.Item1 + " " + clickedPiece.Coordonates.Item2 + '\n' + directoryPath);
             if (clickedPiece.Type == PieceType.None && clickedPiece.ImagePath == Path.Combine(directoryPath, $"PossibleMove.png"))
             {
