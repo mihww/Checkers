@@ -252,7 +252,7 @@ namespace Checkers
 
 
 
-        // Valid moves methods
+        // Valid moves
         public void ValidMoves(int row, int column)
         {
             if (column < 0 || column > 7)
