@@ -11,7 +11,7 @@ This is a homework for the Advanced programming methods subject.
 + **Game loading and saving**
 
 # Controls:
-+ **Right Click - selecting a piece**
-+ **Left Click - selecting the open move**
++ **Right Click - selects a piece**
++ **Left Click - selects the open move**
 
 _The rest of the features - gamemodes, save/load - are listed in the menu bar._
