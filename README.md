@@ -7,7 +7,7 @@ This is a homework for the Advanced programming methods subject.
    - Classic - a basic checkers game
    - Kings only - all pieces are set to 'King' Status
    - Few pieces only - there are only few pieces on the board
-+ **Saving and statistics**
++ **Statistics**
 + **Game loading and saving**
 
 # Controls:
