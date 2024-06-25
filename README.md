@@ -1,6 +1,6 @@
 # Checkers, written in C# & .NET framework
  
-This is a homework from the Advanced programming methods subject.
+This is a homework for the Advanced programming methods subject.
 
 # Features:
 + **Three gamemodes:**
