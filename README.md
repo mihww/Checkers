@@ -12,6 +12,6 @@ This is a homework for the Advanced programming methods subject.
 
 # Controls:
 + **Right Click - selects a piece**
-+ **Left Click - selects the open move**
++ **Left Click - selects the move**
 
 _The rest of the features - gamemodes, save/load - are listed in the menu bar._
